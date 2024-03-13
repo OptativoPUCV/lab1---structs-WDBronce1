@@ -169,7 +169,7 @@ debe apuntar a NULL. La función debe devolver un puntero al primer nodo de la
 lista enlazada.
 Recuerda reservar memoria dinámica para cada nodo usando malloc.
   */
-/*
+
 typedef struct nodo 
 {
   int numero;
@@ -177,7 +177,7 @@ typedef struct nodo
 } Nodo;
 
 Nodo *crearListaEnlazada(int arr[], int size) 
-{ 
+{ /*
   Nodo *lista = NULL;
   Nodo *nodoactual = NULL;
   for (int i = 0; i < size; i++)
@@ -187,6 +187,5 @@ Nodo *crearListaEnlazada(int arr[], int size)
       nodoactual->siguiente = nuevoNodo;
     }
   
-  return NULL; 
+  return NULL; */
 }
-*/
