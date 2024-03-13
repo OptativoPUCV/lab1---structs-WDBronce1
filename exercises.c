@@ -78,12 +78,12 @@ void mergeSortedArrays(int arr1[], int size1, int arr2[], int size2, int result[
   int j = 0, k = 0;
   for (int i = 0; i < size3; i++)
     {
-      if (arr1[j] <= arr2[k])
+      if (arr1[j] <= arr2[k] && j < size1)
       {
         result[i] = arr1[j];
         j++;
       }
-      if (arr2[k] < arr1[j])
+      if (arr2[k] < arr1[j] && k < size2)
       {
         result[i] = arr2[k];
         k++;
@@ -97,7 +97,38 @@ Descripción: Escribe una función que tome un arreglo y su tamaño,
 y luego devuelva 1 si el arreglo está ordenado en orden ascendente,
   0 si no está ordenado, y -1 si está ordenado en orden descendente.
 */
-int checkSorted(int arr[], int size) { return -2; }
+int checkSorted(int arr[], int size) 
+{ 
+  int contador = 0;
+  while (contador < size - 1)
+    {
+      if (arr[contador] < arr[contador+1])
+      {
+        for (int i = contador; i < size - 1; i++)
+          {
+            if (arr[i] > arr[i + 1])
+            {
+              return 0;
+            }
+          }
+        return 1;
+      }
+      if (arr[contador] > arr[contador+1])
+      {
+        for (int i = contador; i < size - 1; i++)
+          {
+            if (arr[i] < arr[i + 1])
+            {
+              return 0;
+            }
+          }
+        return -1;
+      }
+      contador++;
+    }
+  
+  return -2; 
+}
 
 /*
 Ejercicio 6: Información de una Biblioteca
@@ -107,19 +138,26 @@ información utilizando estructuras anidadas en C. Escribe la función para
 inicializar la información de un libro.
 */
 
-typedef struct {
+typedef struct 
+{
   char nombre[50];
   int anioNacimiento;
 } Autor;
 
-typedef struct {
+typedef struct 
+{
   char titulo[100];
   Autor autor;
   int anioPublicacion;
 } Libro;
 
-void inicializarLibro(Libro *libro, const char *titulo, const char *nombreAutor,
-                      int anioNacimiento, int anioPublicacion) {}
+void inicializarLibro(Libro *libro, const char *titulo, const char *nombreAutor, int anioNacimiento, int anioPublicacion) 
+{
+  strcpy(libro->titulo, titulo);
+  strcpy(libro->autor.nombre, nombreAutor);
+  libro->autor.anioNacimiento = anioNacimiento;
+  libro->anioPublicacion = anioPublicacion;
+}
 
 /*
 Ejercicio 7: Lista enlazada de números
@@ -132,9 +170,22 @@ lista enlazada.
 Recuerda reservar memoria dinámica para cada nodo usando malloc.
   */
 
-typedef struct nodo {
+typedef struct nodo 
+{
   int numero;
   struct nodo *siguiente; // puntero al siguiente nodo
 } Nodo;
 
-Nodo *crearListaEnlazada(int arr[], int size) { return NULL; }
+Nodo *crearListaEnlazada(int arr[], int size) 
+{ 
+  Nodo *lista = NULL;
+  Nodo *nodoactual = NULL;
+  for (int i = 0; i < size; i++)
+    {
+      Nodo *nuevoNodo = (Nodo *)malloc(sizeof(Nodo));
+      nodoactual->numero = arr[i];
+      nodoactual->siguiente = nuevoNodo;
+    }
+  
+  return NULL; 
+}
