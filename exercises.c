@@ -186,6 +186,6 @@ Nodo *crearListaEnlazada(int arr[], int size)
       nodoactual->numero = arr[i];
       nodoactual->siguiente = nuevoNodo;
     }
-  
-  return NULL; */
+  */
+  return NULL; 
 }
