@@ -60,6 +60,11 @@ int *filterEvenNumbers(int arr[], int size, int *newSize)
         contador++;
       }
     }
+  if (contador == 0)
+  {
+    *newSize = 0;
+    return NULL;
+  }
   *newSize = contador;
   ArrPar = (int *)realloc(ArrPar, sizeof(int) * contador);
   
