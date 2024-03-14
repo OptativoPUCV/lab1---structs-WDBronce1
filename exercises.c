@@ -80,15 +80,9 @@ void mergeSortedArrays(int arr1[], int size1, int arr2[], int size2, int result[
   
   for (int i = 0; i < size3; i++)
     {
-      if (arr1[j] <= arr2[k] && j < size1)
+      if (arr1[j] <= arr2[k])
       {
-        result[i] = arr1[j];
-        j++;
-      }
-      if (arr2[k] < arr1[j] && k < size2)
-      {
-        result[i] = arr2[k];
-        k++;
+        
       }
     }
 }
@@ -179,15 +173,27 @@ typedef struct nodo
 } Nodo;
 
 Nodo *crearListaEnlazada(int arr[], int size) 
-{ /*
+{ 
   Nodo *lista = NULL;
   Nodo *nodoactual = NULL;
   for (int i = 0; i < size; i++)
     {
       Nodo *nuevoNodo = (Nodo *)malloc(sizeof(Nodo));
       nodoactual->numero = arr[i];
-      nodoactual->siguiente = nuevoNodo;
+      nuevoNodo->siguiente = NULL;
+      if (lista == NULL)
+      {
+        lista = nuevoNodo;
+      }
+      else
+      {
+        nodoactual->siguiente = nuevoNodo;
+      }
+      nodoactual = nuevoNodo;
+      
     }
-  */
+    
+    nodoactual->siguiente = NULL;
+  
   return NULL; 
 }
